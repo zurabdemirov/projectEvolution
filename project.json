@@ -1,0 +1,72 @@
+{
+  "name": "project-evolution",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "./src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/project-evolution"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "project-evolution:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "project-evolution:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "project-evolution:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "project-evolution:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "project-evolution:build:development"
+        },
+        "production": {
+          "buildTarget": "project-evolution:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/project-evolution"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "coverage/project-evolution"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["./src/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "userId": 1,
+      "id": 1,
+      "name": "Вася",
+      "surname": "Пупов"
+    },
+    {
+      "userId": 1,
+      "id": 2,
+      "name": "Петя",
+      "surname": "Петрушкин"
+    },
+    {
+      "userId": 1,
+      "id": 3,
+      "name": "Коля",
+      "surname": "Туземун"
+    },
+    {
+      "userId": 1,
+      "id": 4,
+      "name": "Стас",
+      "surname": "Хомов"
+    },
+    {
+      "userId": 1,
+      "id": 5,
+      "name": "Дима",
+      "surname": "Сериков"
+    },
+    {
+      "userId": 1,
+      "id": 6,
+      "name": "Слава",
+      "surname": "Шариков"
+    }
+  ]
+}
