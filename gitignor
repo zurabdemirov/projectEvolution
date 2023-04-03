@@ -1,11 +1,11 @@
 #idea
-idea
+*idea
 *.iml
 
 yarn.lock
 
 # dependencies
-node_modules
+*node_modules
 .vscode
 .npmrc
 # testing
