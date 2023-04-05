@@ -1,6 +1,22 @@
 import React from "react";
 import ReactSelect from "react-select/async";
 import axios from "axios";
+import {StateType} from "../app/app";
+
+interface PropsType {
+    id?: string,
+    name: string,
+    value: string,
+    cacheOptions: any,
+    placeholder: string;
+    getOptionValue: { name: string; },
+    getOptionLabel: { name: string; },
+    onChange:any,
+    defaultOptions: any,
+    url: string,
+    urlFilter: string,
+    state: StateType
+}
 
 export const AsyncSelect = ({
                                 id,
@@ -14,12 +30,14 @@ export const AsyncSelect = ({
                                 defaultOptions,
                                 url,
                                 urlFilter,
+                                state,
                                 ...rest
-                            }) => {
-    const loadOptions = (inputValue, callback) => {
+                            }: PropsType) => {
+
+    const loadOptions = (inputValue: string, callback: (arg: any) => void) => {
         axios.get(url).then(function (response) {
             console.log(response);
-            const filterOptions = response.data?.filter((i) =>
+            const filterOptions = response.data?.filter((i: { [x: string]: string; }) =>
                 i[urlFilter]?.toLowerCase().includes(inputValue.toLowerCase())
             );
 

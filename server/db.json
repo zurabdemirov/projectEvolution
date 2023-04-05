@@ -4,37 +4,43 @@
       "userId": 1,
       "id": 1,
       "name": "Вася",
-      "surname": "Пупов"
+      "surname": "Пупов",
+      "param": "id"
     },
     {
       "userId": 1,
       "id": 2,
       "name": "Петя",
-      "surname": "Петрушкин"
+      "surname": "Петрушкин",
+      "param": "id"
     },
     {
       "userId": 1,
       "id": 3,
       "name": "Коля",
-      "surname": "Туземун"
+      "surname": "Туземун",
+      "param": "id"
     },
     {
       "userId": 1,
       "id": 4,
       "name": "Стас",
-      "surname": "Хомов"
+      "surname": "Хомов",
+      "param": "id"
     },
     {
       "userId": 1,
       "id": 5,
       "name": "Дима",
-      "surname": "Сериков"
+      "surname": "Сериков",
+      "param": "id"
     },
     {
       "userId": 1,
       "id": 6,
       "name": "Слава",
-      "surname": "Шариков"
+      "surname": "Шариков",
+      "param": "id"
     }
   ]
 }

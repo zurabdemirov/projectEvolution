@@ -1,23 +1,33 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useEffect, useState } from "react";
 import { AsyncSelect } from "../shared/AsyncSelect";
 import axios from "axios";
 
 const formsObject = {
-    inp: "",
     firstSelect: "",
     secondSelect: ""
 };
 
-export default function App() {
-    const [state, setState] = useState(formsObject);
-    const [posts, setPosts] = useState([]);
-    console.log("state@@@", state);
-    console.log("posts@@@", posts);
+interface PostsType {
+    id: number,
+    name:  string | undefined,
+    surname: string,
+    userId: number,
+}
 
-    const onOptionChange = (newValue, actionMeta) => {
-        // console.log("newValue", newValue);
-        // console.log("actionMeta", actionMeta);
+export interface StateType {
+    firstSelect?: "" | PostsType,
+    secondSelect?: "" | PostsType
+}
+
+export default function App() {
+    const [state, setState] = useState<{ firstSelect: string; secondSelect: string; }>(formsObject);
+    const [posts, setPosts] = useState<PostsType[]>([]);
+    // console.log("state@@@", state);
+    // console.log("posts@@@", posts);
+
+    const onOptionChange = (newValue: PostsType, actionMeta: any) => {
+        console.log("newValue@@@", newValue);
+        console.log("actionMeta@@@", actionMeta);
         setState({
             ...state,
             [actionMeta.name]: newValue
@@ -30,7 +40,7 @@ export default function App() {
 
     const fetchPost = async () => {
         try {
-            const response = await axios(`http://localhost:3001/posts?id=${state.firstSelect.id}`);
+            const response = await axios(`http://localhost:3001/posts?${state.firstSelect?.param}=${state.secondSelect?.id}`);
 
             setPosts(response.data);
         } catch (err) {
@@ -53,33 +63,31 @@ export default function App() {
                         cacheOptions
                         placeholder="first"
                         url="http://localhost:3001/posts"
-                        urlFilter="name"
-                        getOptionValue={({ name }) => name}
-                        getOptionLabel={({ name }) => name}
+                        urlFilter="param"
+                        getOptionValue={({ param }: { param: string; }) => param}
+                        getOptionLabel={({ param }: { param: string; }) => param}
                         onChange={onOptionChange}
                         defaultOptions
                         state={state}
                     />
                 </div>
-                {/*<div className='selectContainer'>*/}
-                {/*    <AsyncSelect*/}
-                {/*        id="secondSelect"*/}
-                {/*        name="secondSelect"*/}
-                {/*        value={state.secondSelect}*/}
-                {/*        cacheOptions*/}
-                {/*        placeholder="second"*/}
-                {/*        url="http://localhost:3001/posts"*/}
-                {/*        urlFilter="surname"*/}
-                {/*        getOptionValue={({ surname }) => surname}*/}
-                {/*        getOptionLabel={({ surname }) => surname}*/}
-                {/*        onChange={onOptionChange}*/}
-                {/*        defaultOptions*/}
-                {/*        state={state}*/}
-                {/*    />*/}
-                {/*</div>*/}
-                {/*{posts.filter((user) => {*/}
-                {/*    return user?.name === state.firstSelect?.name*/}
-                {/*})}*/}
+                <div className='selectContainer'>
+                    <AsyncSelect
+                        id="secondSelect"
+                        name="secondSelect"
+                        value={state.secondSelect}
+                        cacheOptions
+                        placeholder="second"
+                        url="http://localhost:3001/posts"
+                        urlFilter="surname"
+                        getOptionValue={({ surname }: { surname: string; }) => surname}
+                        getOptionLabel={({ surname }: { surname: string; }) => surname}
+                        onChange={onOptionChange}
+                        defaultOptions
+                        state={state}
+                    />
+                </div>
+
                 {posts.map((user) => {
                   return  <div key={user?.id}>{user?.name} {user?.surname}</div>
                         })}
