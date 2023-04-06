@@ -36,7 +36,6 @@ export const AsyncSelect = ({
 
     const loadOptions = (inputValue: string, callback: (arg: any) => void) => {
         axios.get(url).then(function (response) {
-            console.log(response);
             const filterOptions = response.data?.filter((i: { [x: string]: string; }) =>
                 i[urlFilter]?.toLowerCase().includes(inputValue.toLowerCase())
             );

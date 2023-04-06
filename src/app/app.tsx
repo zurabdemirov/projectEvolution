@@ -9,9 +9,7 @@ const formsObject = {
 
 interface PostsType {
     id: number,
-    name:  string | undefined,
-    surname: string,
-    userId: number,
+    name:  string
 }
 
 export interface StateType {
@@ -40,7 +38,7 @@ export default function App() {
 
     const fetchPost = async () => {
         try {
-            const response = await axios(`http://localhost:3001/posts?${state.firstSelect?.param}=${state.secondSelect?.id}`);
+            const response = await axios(`http://localhost:3001/countries`);
 
             setPosts(response.data);
         } catch (err) {
@@ -62,10 +60,10 @@ export default function App() {
                         value={state.firstSelect}
                         cacheOptions
                         placeholder="first"
-                        url="http://localhost:3001/posts"
-                        urlFilter="param"
-                        getOptionValue={({ param }: { param: string; }) => param}
-                        getOptionLabel={({ param }: { param: string; }) => param}
+                        url="http://localhost:3001/countries"
+                        urlFilter="name"
+                        getOptionValue={({ name }: { name: string; }) => name}
+                        getOptionLabel={({ name }: { name: string; }) => name}
                         onChange={onOptionChange}
                         defaultOptions
                         state={state}
@@ -78,19 +76,19 @@ export default function App() {
                         value={state.secondSelect}
                         cacheOptions
                         placeholder="second"
-                        url="http://localhost:3001/posts"
-                        urlFilter="surname"
-                        getOptionValue={({ surname }: { surname: string; }) => surname}
-                        getOptionLabel={({ surname }: { surname: string; }) => surname}
+                        url="http://localhost:3001/cities"
+                        urlFilter="name"
+                        getOptionValue={({ name }: { name: string; }) => name}
+                        getOptionLabel={({ name }: { name: string; }) => name}
                         onChange={onOptionChange}
                         defaultOptions
                         state={state}
                     />
                 </div>
 
-                {posts.map((user) => {
-                  return  <div key={user?.id}>{user?.name} {user?.surname}</div>
-                        })}
+                {/*{posts.map((user) => {*/}
+                {/*  return  <div key={user?.id}>{user?.name}</div>*/}
+                {/*        })}*/}
             </div>
         </>
     );

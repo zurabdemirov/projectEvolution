@@ -1,46 +1,31 @@
 {
-  "posts": [
+  "countries": [
     {
-      "userId": 1,
       "id": 1,
-      "name": "Вася",
-      "surname": "Пупов",
-      "param": "id"
+      "name": "Китай"
     },
     {
-      "userId": 1,
       "id": 2,
-      "name": "Петя",
-      "surname": "Петрушкин",
-      "param": "id"
+      "name": "Россия"
     },
     {
-      "userId": 1,
       "id": 3,
-      "name": "Коля",
-      "surname": "Туземун",
-      "param": "id"
+      "name": "США"
+    }
+  ],
+
+  "cities": [
+    {
+      "id": 1,
+      "name": "Сеул"
     },
     {
-      "userId": 1,
-      "id": 4,
-      "name": "Стас",
-      "surname": "Хомов",
-      "param": "id"
+      "id": 2,
+      "name": "Таганрог"
     },
     {
-      "userId": 1,
-      "id": 5,
-      "name": "Дима",
-      "surname": "Сериков",
-      "param": "id"
-    },
-    {
-      "userId": 1,
-      "id": 6,
-      "name": "Слава",
-      "surname": "Шариков",
-      "param": "id"
+      "id": 3,
+      "name": "Флорида"
     }
   ]
 }
