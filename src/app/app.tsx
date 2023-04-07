@@ -18,27 +18,26 @@ export interface StateType {
 }
 
 export default function App() {
-    const [state, setState] = useState<{ firstSelect: string; secondSelect: string; }>(formsObject);
+    const [state, setState] = useState<any>(formsObject);
+    const [url, setUrl] = useState({link:''})
     const [posts, setPosts] = useState<PostsType[]>([]);
+    // console.log("url@@@", url);
     // console.log("state@@@", state);
     // console.log("posts@@@", posts);
 
     const onOptionChange = (newValue: PostsType, actionMeta: any) => {
-        console.log("newValue@@@", newValue);
-        console.log("actionMeta@@@", actionMeta);
-        setState({
-            ...state,
-            [actionMeta.name]: newValue
-        });
+        // console.log("newValue@@@", newValue);
+        // console.log("actionMeta@@@", actionMeta);
+        setState((state: any) => ({...state, [actionMeta.name]: newValue}))
     };
 
     useEffect(() => {
         setState({ ...state, secondSelect: "" });
-    }, [state.firstSelect]);
+    }, [state.firstSelect.id]);
 
     const fetchPost = async () => {
         try {
-            const response = await axios(`http://localhost:3001/countries`);
+            const response = await axios(url.link);
 
             setPosts(response.data);
         } catch (err) {
@@ -49,6 +48,16 @@ export default function App() {
     useEffect(()=> {
         fetchPost();
     }, [state])
+
+    useEffect(() => {
+        let localUrl = `http://localhost:3001/`
+        if(state.firstSelect.id){
+            setUrl( {...url, link: `${localUrl}` + `countries?=${String(state.firstSelect.id)}`})
+        }
+        if(state.firstSelect.id && state.secondSelect.id){
+            setUrl( {...url, link: `${url.link.slice(0,34)}&cities=${String(state.secondSelect.id)}`})
+        }
+    }, [state.firstSelect, state.secondSelect]);
 
     return (
         <>
