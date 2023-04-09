@@ -9,7 +9,11 @@ const formsObject = {
 
 interface PostsType {
     id: number,
-    name:  string
+    name:  string,
+    cities: {
+        id: number,
+        name: string
+    }[]
 }
 
 export interface StateType {
@@ -21,9 +25,15 @@ export default function App() {
     const [state, setState] = useState<any>(formsObject);
     const [url, setUrl] = useState({link:''})
     const [posts, setPosts] = useState<PostsType[]>([]);
+
+    const urlSecondSelect = state.firstSelect.id
+        ? `http://localhost:3001/cities?countryId=${String(state.firstSelect.id)}`
+        : `http://localhost:3001/cities`
+
     // console.log("url@@@", url);
     // console.log("state@@@", state);
     // console.log("posts@@@", posts);
+    // console.log("urlSecondSelect@@@", urlSecondSelect);
 
     const onOptionChange = (newValue: PostsType, actionMeta: any) => {
         // console.log("newValue@@@", newValue);
@@ -38,7 +48,6 @@ export default function App() {
     const fetchPost = async () => {
         try {
             const response = await axios(url.link);
-
             setPosts(response.data);
         } catch (err) {
             console.error(err);
@@ -85,7 +94,7 @@ export default function App() {
                         value={state.secondSelect}
                         cacheOptions
                         placeholder="second"
-                        url="http://localhost:3001/cities"
+                        url={urlSecondSelect}
                         urlFilter="name"
                         getOptionValue={({ name }: { name: string; }) => name}
                         getOptionLabel={({ name }: { name: string; }) => name}

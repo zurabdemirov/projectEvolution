@@ -13,19 +13,51 @@
       "name": "США"
     }
   ],
-
   "cities": [
     {
       "id": 1,
-      "name": "Сеул"
+      "name": "Ухань",
+      "countryId": 1
     },
     {
       "id": 2,
-      "name": "Таганрог"
+      "name": "Пекин",
+      "countryId": 1
     },
     {
       "id": 3,
-      "name": "Флорида"
+      "name": "Гуанджоу",
+      "countryId": 1
+    },
+    {
+      "id": 4,
+      "name": "Таганрог",
+      "countryId": 2
+    },
+    {
+      "id": 5,
+      "name": "Ростов",
+      "countryId": 2
+    },
+    {
+      "id": 6,
+      "name": "Крым",
+      "countryId": 2
+    },
+    {
+      "id": 7,
+      "name": "Флорина",
+      "countryId": 3
+    },
+    {
+      "id": 8,
+      "name": "Канзас",
+      "countryId": 3
+    },
+    {
+      "id": 9,
+      "name": "Аляска",
+      "countryId": 3
     }
   ]
 }
