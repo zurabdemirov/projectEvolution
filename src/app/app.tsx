@@ -27,17 +27,17 @@ export default function App() {
     const [posts, setPosts] = useState<PostsType[]>([]);
 
     const urlSecondSelect = state.firstSelect.id
-        ? `http://localhost:3001/cities?countryId=${String(state.firstSelect.id)}`
+        ? `http://localhost:3001/cities?countryId=${state.firstSelect.id}`
         : `http://localhost:3001/cities`
 
     // console.log("url@@@", url);
     // console.log("state@@@", state);
     // console.log("posts@@@", posts);
-    // console.log("urlSecondSelect@@@", urlSecondSelect);
+    console.log("urlSecondSelect@@@", urlSecondSelect);
 
     const onOptionChange = (newValue: PostsType, actionMeta: any) => {
-        // console.log("newValue@@@", newValue);
-        // console.log("actionMeta@@@", actionMeta);
+        console.log("newValue@@@", newValue);
+        console.log("actionMeta@@@", actionMeta);
         setState((state: any) => ({...state, [actionMeta.name]: newValue}))
     };
 
@@ -89,6 +89,7 @@ export default function App() {
                 </div>
                 <div className='selectContainer'>
                     <AsyncSelect
+                        key={JSON.stringify(urlSecondSelect)}
                         id="secondSelect"
                         name="secondSelect"
                         value={state.secondSelect}
