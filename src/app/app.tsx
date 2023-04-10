@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { AsyncSelect } from "../shared/AsyncSelect";
 import { useAsyncFn } from 'react-use';
-import {fetch} from "../requests";
-import {formsObject, PostsType, StateType} from '../type'
+import { fetchCountries } from "../requests";
+import { formsObject, Posts, State } from '../type'
 
 export default function App() {
     const [state, setState] = useState<any>(formsObject);
-    const [{value}, getCountries] = useAsyncFn(fetch);
+    const [{value, error}, getCountries] = useAsyncFn(fetchCountries);
 
     const urlSecondSelect = state.firstSelect.id
         ? `http://localhost:3001/cities?countryId=${state.firstSelect.id}`
         : `http://localhost:3001/cities`
 
-    const onOptionChange = (newValue: PostsType, actionMeta: any) => {
-        setState((state: any) => ({...state, [actionMeta.name]: newValue}))
+    const onOptionChange = (newValue: Posts, { name }: Posts) => {
+        setState((state: any) => ({...state, [name]: newValue}))
     };
 
     useEffect(() => {
@@ -39,7 +39,7 @@ export default function App() {
                         className={'selectContainer'}
                     />
                     <AsyncSelect
-                        key={JSON.stringify(urlSecondSelect)}
+                        key={urlSecondSelect}
                         name="secondSelect"
                         value={state.secondSelect}
                         placeholder="second"

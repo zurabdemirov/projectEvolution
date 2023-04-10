@@ -3,16 +3,12 @@ export const formsObject = {
     secondSelect: ""
 };
 
-export interface PostsType {
+export interface Posts {
     id: number,
     name:  string,
-    cities: {
-        id: number,
-        name: string
-    }[]
 }
 
-export interface StateType {
-    firstSelect?: "" | PostsType,
-    secondSelect?: "" | PostsType
+export interface State {
+    firstSelect?: "" | Posts,
+    secondSelect?: "" | Posts
 }

@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import ReactSelect from "react-select/async";
 import axios from "axios";
-import {StateType} from "../app/app";
 
 interface PropsType {
     id?: string,
@@ -15,6 +14,8 @@ interface PropsType {
     urlFilter: string,
     className?: string
 }
+
+const getOption = ({name}: { name: string; }) => (name)
 
 export const AsyncSelect = ({
                                 id,
@@ -31,24 +32,24 @@ export const AsyncSelect = ({
                             }: PropsType) => {
 
     const loadOptions = (inputValue: string, callback: (arg: any) => void) => {
-        axios.get(url).then(function (response) {
-            const filterOptions = response.data?.filter((i: { [x: string]: string; }) =>
-                i[urlFilter]?.toLowerCase().includes(inputValue.toLowerCase())
-            );
-
-            callback(filterOptions);
-        });
+        try {
+            axios.get(url).then(function (response) {
+                const filterOptions = response.data?.filter((i: { [x: string]: string; }) =>
+                    i[urlFilter]?.toLowerCase().includes(inputValue.toLowerCase())
+                );
+                callback(filterOptions);
+            });
+        } catch (error: any) {
+            console.error("Произошла ошибка при загрузке параметров селекта");
+        }
     };
 
     return (
         <ReactSelect
-            id={id}
             name={name}
-            value={value}
-            cacheOptions
             placeholder={placeholder}
-            getOptionValue={({ name }: { name: string; }) => name}
-            getOptionLabel={({ name }: { name: string; }) => name}
+            getOptionValue={getOption}
+            getOptionLabel={getOption}
             loadOptions={loadOptions}
             onChange={onChange}
             defaultOptions
