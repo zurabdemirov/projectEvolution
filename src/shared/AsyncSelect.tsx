@@ -6,31 +6,27 @@ import {StateType} from "../app/app";
 interface PropsType {
     id?: string,
     name: string,
-    value: string,
-    cacheOptions: any,
+    value: { name: string; } | undefined,
     placeholder: string;
-    getOptionValue: { name: string; },
-    getOptionLabel: { name: string; },
+    optionValue: string,
+    optionLabel: string,
     onChange:any,
-    defaultOptions: any,
     url: string,
     urlFilter: string,
-    state: StateType
+    className?: string
 }
 
 export const AsyncSelect = ({
                                 id,
                                 name,
                                 value,
-                                cacheOptions,
                                 placeholder,
-                                getOptionValue,
-                                getOptionLabel,
+                                optionValue,
+                                optionLabel,
                                 onChange,
-                                defaultOptions,
                                 url,
                                 urlFilter,
-                                state,
+                                className,
                                 ...rest
                             }: PropsType) => {
 
@@ -49,13 +45,14 @@ export const AsyncSelect = ({
             id={id}
             name={name}
             value={value}
-            cacheOptions={cacheOptions}
+            cacheOptions
             placeholder={placeholder}
-            getOptionValue={getOptionValue}
-            getOptionLabel={getOptionLabel}
+            getOptionValue={({ name }: { name: string; }) => name}
+            getOptionLabel={({ name }: { name: string; }) => name}
             loadOptions={loadOptions}
             onChange={onChange}
-            defaultOptions={defaultOptions}
+            defaultOptions
+            className={className}
             {...rest}
         />
     );
