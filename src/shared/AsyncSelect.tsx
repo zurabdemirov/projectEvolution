@@ -5,7 +5,6 @@ import axios from "axios";
 interface PropsType {
     id?: string,
     name: string,
-    value: { name: string; } | undefined,
     placeholder: string;
     optionValue: string,
     optionLabel: string,
@@ -20,7 +19,7 @@ const getOption = ({name}: { name: string; }) => (name)
 export const AsyncSelect = ({
                                 id,
                                 name,
-                                value,
+                                // value,
                                 placeholder,
                                 optionValue,
                                 optionLabel,
@@ -32,16 +31,22 @@ export const AsyncSelect = ({
                             }: PropsType) => {
 
     const loadOptions = (inputValue: string, callback: (arg: any) => void) => {
-        try {
             axios.get(url).then(function (response) {
                 const filterOptions = response.data?.filter((i: { [x: string]: string; }) =>
                     i[urlFilter]?.toLowerCase().includes(inputValue.toLowerCase())
                 );
                 callback(filterOptions);
-            });
-        } catch (error: any) {
-            console.error("Произошла ошибка при загрузке параметров селекта");
-        }
+            }).catch(function (error) {
+                if (error.response) {
+                    console.log('@@@error.response.data', error.response.data)
+                    console.log('@@@error.response.status', error.response.status)
+                    console.log('@@@error.response.headers', error.response.headers)
+                } else if (error.request) {
+                    console.log('@@@error.request', error.request)
+                } else {
+                    console.log('@@@Error', error.message);
+                }
+            })
     };
 
     return (

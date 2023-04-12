@@ -3,18 +3,29 @@ import { AsyncSelect } from "../shared/AsyncSelect";
 import { useAsyncFn } from 'react-use';
 import { fetchCountries } from "../requests";
 import { formsObject, Posts, State } from '../type'
+// @ts-ignore
+import qs from 'qs';
 
 export default function App() {
     const [state, setState] = useState<any>(formsObject);
     const [{value, error}, getCountries] = useAsyncFn(fetchCountries);
 
-    const urlSecondSelect = state.firstSelect.id
-        ? `http://localhost:3001/cities?countryId=${state.firstSelect.id}`
-        : `http://localhost:3001/cities`
-
     const onOptionChange = (newValue: Posts, { name }: Posts) => {
         setState((state: any) => ({...state, [name]: newValue}))
     };
+
+    const generateUrlSelect = (name: string) => {
+        const url = `http://localhost:3001/`
+        if (name === "firstSelect") {
+            return `${url}countries`
+        }
+
+        if(name === "secondSelect" && state.firstSelect.id){
+            const queryString = qs.stringify({ countryId: state.firstSelect.id });
+            return `${url}cities?${queryString}`
+        }
+        return `${url}cities`
+    }
 
     useEffect(() => {
         setState({ ...state, secondSelect: "" });
@@ -29,9 +40,8 @@ export default function App() {
             <div className='app'>
                     <AsyncSelect
                         name="firstSelect"
-                        value={state.firstSelect}
                         placeholder="first"
-                        url="http://localhost:3001/countries"
+                        url={generateUrlSelect("firstSelect")}
                         urlFilter="name"
                         onChange={onOptionChange}
                         optionValue="name"
@@ -39,11 +49,10 @@ export default function App() {
                         className={'selectContainer'}
                     />
                     <AsyncSelect
-                        key={urlSecondSelect}
+                        key={state.firstSelect.id}
                         name="secondSelect"
-                        value={state.secondSelect}
                         placeholder="second"
-                        url={urlSecondSelect}
+                        url={generateUrlSelect("secondSelect")}
                         urlFilter="name"
                         onChange={onOptionChange}
                         optionValue="name"
