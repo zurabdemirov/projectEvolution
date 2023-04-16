@@ -1,12 +1,49 @@
-.app {
+
+html,
+body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+.container {
+  min-height:100%;
+}
+.header {
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
+  background-color: darkgray;
+  padding: 10px;
+  height: 50px;
+  margin-bottom: 50px;
 
-  width: 400px;
+    .linkContainer {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
 
+    .link {
+      text-decoration: none;
+      padding: 10px;
+      color: black;
+    }
 }
 
 .selectContainer {
   padding-bottom: 20px;
+  width: 400px;
+}
+
+.outletContainer {
+  padding:10px;
+  padding-bottom:60px;
+}
+.footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:60px;
+  background-color: darkgray;
 }

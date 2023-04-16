@@ -19,7 +19,6 @@ const getOption = ({name}: { name: string; }) => (name)
 export const AsyncSelect = ({
                                 id,
                                 name,
-                                // value,
                                 placeholder,
                                 optionValue,
                                 optionLabel,
@@ -39,8 +38,6 @@ export const AsyncSelect = ({
             }).catch(function (error) {
                 if (error.response) {
                     console.log('@@@error.response.data', error.response.data)
-                    console.log('@@@error.response.status', error.response.status)
-                    console.log('@@@error.response.headers', error.response.headers)
                 } else if (error.request) {
                     console.log('@@@error.request', error.request)
                 } else {
