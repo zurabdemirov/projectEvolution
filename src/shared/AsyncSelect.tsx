@@ -11,17 +11,15 @@ interface PropsType {
     onChange:any,
     url: string,
     urlFilter: string,
-    className?: string
+    className?: string,
 }
 
 const getOption = ({name}: { name: string; }) => (name)
+const domain = 'http://localhost:3001/'
 
 export const AsyncSelect = ({
-                                id,
                                 name,
                                 placeholder,
-                                optionValue,
-                                optionLabel,
                                 onChange,
                                 url,
                                 urlFilter,
@@ -30,7 +28,9 @@ export const AsyncSelect = ({
                             }: PropsType) => {
 
     const loadOptions = (inputValue: string, callback: (arg: any) => void) => {
-            axios.get(url).then(function (response) {
+            const urlPrams = `${domain}${url}`
+
+            axios.get(urlPrams).then(function (response) {
                 const filterOptions = response.data?.filter((i: { [x: string]: string; }) =>
                     i[urlFilter]?.toLowerCase().includes(inputValue.toLowerCase())
                 );

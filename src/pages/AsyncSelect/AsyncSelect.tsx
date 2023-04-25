@@ -14,19 +14,6 @@ export default function TrainingAsyncSelect() {
         setState((state: any) => ({...state, [name]: newValue}))
     };
 
-    const generateUrlSelect = (name: string) => {
-        const url = `http://localhost:3001/`
-        if (name === "firstSelect") {
-            return `${url}countries`
-        }
-
-        if(name === "secondSelect" && state.firstSelect.id){
-            const queryString = qs.stringify({ countryId: state.firstSelect.id });
-            return `${url}cities?${queryString}`
-        }
-        return `${url}cities`
-    }
-
     useEffect(() => {
         setState({ ...state, secondSelect: "" });
     }, [state.firstSelect.id]);
@@ -41,7 +28,7 @@ export default function TrainingAsyncSelect() {
                 <AsyncSelect
                     name="firstSelect"
                     placeholder="first"
-                    url={generateUrlSelect("firstSelect")}
+                    url={`countries`}
                     urlFilter="name"
                     onChange={onOptionChange}
                     optionValue="name"
@@ -52,7 +39,7 @@ export default function TrainingAsyncSelect() {
                     key={state.firstSelect.id}
                     name="secondSelect"
                     placeholder="second"
-                    url={generateUrlSelect("secondSelect")}
+                    url={`cities?${qs.stringify({ countryId: state.firstSelect.id })}`}
                     urlFilter="name"
                     onChange={onOptionChange}
                     optionValue="name"
