@@ -59,5 +59,61 @@
       "name": "Аляска",
       "countryId": 3
     }
+  ],
+  "avatar": [
+    {
+      "id": 1,
+      "name": "Дракон"
+    },
+    {
+      "id": 2,
+      "name": "Медведь"
+    },
+    {
+      "id": 3,
+      "name": "Орел"
+    }
+  ],
+  "currency": [
+    {
+      "id": 1,
+      "name": "Юань"
+    },
+    {
+      "id": 2,
+      "name": "Рубыль"
+    },
+    {
+      "id": 3,
+      "name": "Доллар"
+    }
+  ],
+  "brands": [
+    {
+      "id": 1,
+      "name": "China"
+    },
+    {
+      "id": 2,
+      "name": "Russia"
+    },
+    {
+      "id": 3,
+      "name": "USA"
+    }
+  ],
+  "language": [
+    {
+      "id": 1,
+      "name": "Chinese"
+    },
+    {
+      "id": 2,
+      "name": "Russian"
+    },
+    {
+      "id": 3,
+      "name": "English"
+    }
   ]
 }

@@ -49,7 +49,7 @@ export default function TrainingAsyncSelect() {
                 <AsyncSelect
                     name="thirdSelect"
                     placeholder="third"
-                    url={`countries`}
+                    url={`avatar`}
                     urlFilter="name"
                     onChange={onOptionChange}
                     optionValue="name"
@@ -59,7 +59,7 @@ export default function TrainingAsyncSelect() {
                 <AsyncSelect
                     name="fifthSelect"
                     placeholder="fifth"
-                    url={`countries`}
+                    url={`currency`}
                     urlFilter="name"
                     onChange={onOptionChange}
                     optionValue="name"
@@ -69,7 +69,7 @@ export default function TrainingAsyncSelect() {
                 <AsyncSelect
                     name="sixSelect"
                     placeholder="six"
-                    url={`countries`}
+                    url={`brands`}
                     urlFilter="name"
                     onChange={onOptionChange}
                     optionValue="name"
@@ -79,7 +79,7 @@ export default function TrainingAsyncSelect() {
                 <AsyncSelect
                     name="sevenSelect"
                     placeholder="seven"
-                    url={`countries`}
+                    url={`language`}
                     urlFilter="name"
                     onChange={onOptionChange}
                     optionValue="name"
