@@ -15,7 +15,7 @@ export default function TrainingAsyncSelect() {
     };
 
     useEffect(() => {
-        setState({ ...state, secondSelect: "" });
+        setState((state: any) => ({ ...state, secondSelect: "" }));
     }, [state.firstSelect.id]);
 
     useEffect(()=> {
@@ -40,6 +40,46 @@ export default function TrainingAsyncSelect() {
                     name="secondSelect"
                     placeholder="second"
                     url={`cities?${qs.stringify({ countryId: state.firstSelect.id })}`}
+                    urlFilter="name"
+                    onChange={onOptionChange}
+                    optionValue="name"
+                    optionLabel="name"
+                    className={'selectContainer'}
+                />
+                <AsyncSelect
+                    name="thirdSelect"
+                    placeholder="third"
+                    url={`countries`}
+                    urlFilter="name"
+                    onChange={onOptionChange}
+                    optionValue="name"
+                    optionLabel="name"
+                    className={'selectContainer'}
+                />
+                <AsyncSelect
+                    name="fifthSelect"
+                    placeholder="fifth"
+                    url={`countries`}
+                    urlFilter="name"
+                    onChange={onOptionChange}
+                    optionValue="name"
+                    optionLabel="name"
+                    className={'selectContainer'}
+                />
+                <AsyncSelect
+                    name="sixSelect"
+                    placeholder="six"
+                    url={`countries`}
+                    urlFilter="name"
+                    onChange={onOptionChange}
+                    optionValue="name"
+                    optionLabel="name"
+                    className={'selectContainer'}
+                />
+                <AsyncSelect
+                    name="sevenSelect"
+                    placeholder="seven"
+                    url={`countries`}
                     urlFilter="name"
                     onChange={onOptionChange}
                     optionValue="name"

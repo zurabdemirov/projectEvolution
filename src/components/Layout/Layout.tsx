@@ -9,6 +9,7 @@ const Layout = () => {
                 <div className='linkContainer'>
                     <NavLink className='link' to="/">HOME</NavLink>
                     <NavLink className='link' to="/trainingAsyncSelect">TRAINING ASYNC SELECT</NavLink>
+                    <NavLink className='link' to="/trainingReactHookForm">TRAINING REACT HOOK FORM</NavLink>
                 </div>
             </header>
             <body className='outletContainer'>

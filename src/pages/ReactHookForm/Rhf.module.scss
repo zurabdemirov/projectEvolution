@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  height: 25px;
+  width: 380px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.error {
+  color: red;
+}
