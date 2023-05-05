@@ -1,6 +1,10 @@
 export const formsObject = {
     firstSelect: "",
-    secondSelect: ""
+    secondSelect: "",
+    thirdSelect: "",
+    fifthSelect: "",
+    sixSelect: "",
+    sevenSelect: "",
 };
 
 export interface Posts {
@@ -10,5 +14,9 @@ export interface Posts {
 
 export interface State {
     firstSelect?: "" | Posts,
-    secondSelect?: "" | Posts
+    secondSelect?: "" | Posts,
+    thirdSelect?: "" | Posts,
+    fifthSelect?: "" | Posts,
+    sixSelect?: "" | Posts,
+    sevenSelect?: "" | Posts,
 }

@@ -63,15 +63,18 @@
   "avatar": [
     {
       "id": 1,
-      "name": "Дракон"
+      "name": "Дракон",
+      "countryId": 1
     },
     {
       "id": 2,
-      "name": "Медведь"
+      "name": "Медведь",
+      "countryId": 2
     },
     {
       "id": 3,
-      "name": "Орел"
+      "name": "Орел",
+      "countryId": 3
     }
   ],
   "currency": [

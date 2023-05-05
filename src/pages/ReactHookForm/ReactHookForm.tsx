@@ -22,9 +22,9 @@ export default function TrainingReactHookForm() {
     });
     const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
 
-    console.log('@@@watch', watch("firstName"))
-    console.log('@@@watch', watch('lastName'))
-    console.log('@@@watch', watch('age'))
+    // console.log('@@@watch', watch("firstName"))
+    // console.log('@@@watch', watch('lastName'))
+    // console.log('@@@watch', watch('age'))
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

@@ -9,7 +9,7 @@ interface PropsType {
     optionValue: string,
     optionLabel: string,
     onChange:any,
-    url: string,
+    url?: string,
     urlFilter: string,
     className?: string,
 }
@@ -22,14 +22,14 @@ export const AsyncSelect = ({
                                 placeholder,
                                 onChange,
                                 url,
-                                urlFilter,
                                 className,
+                                urlFilter = "name",
+                                optionValue = "name",
+                                optionLabel = "name",
                                 ...rest
                             }: PropsType) => {
-
     const loadOptions = (inputValue: string, callback: (arg: any) => void) => {
             const urlPrams = `${domain}${url}`
-
             axios.get(urlPrams).then(function (response) {
                 const filterOptions = response.data?.filter((i: { [x: string]: string; }) =>
                     i[urlFilter]?.toLowerCase().includes(inputValue.toLowerCase())
@@ -37,7 +37,7 @@ export const AsyncSelect = ({
                 callback(filterOptions);
             }).catch(function (error) {
                 if (error.response) {
-                    console.log('@@@error.response.data', error.response.data)
+                    console.log('@@@error', error)
                 } else if (error.request) {
                     console.log('@@@error.request', error.request)
                 } else {
