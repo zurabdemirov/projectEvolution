@@ -8,7 +8,7 @@ interface PropsType {
     placeholder: string;
     optionValue: string,
     optionLabel: string,
-    onChange:any,
+    onOptionChange:any,
     url?: string,
     urlFilter: string,
     className?: string,
@@ -20,7 +20,7 @@ const domain = 'http://localhost:3001/'
 export const AsyncSelect = ({
                                 name,
                                 placeholder,
-                                onChange,
+                                onOptionChange,
                                 url,
                                 className,
                                 urlFilter = "name",
@@ -53,7 +53,7 @@ export const AsyncSelect = ({
             getOptionValue={getOption}
             getOptionLabel={getOption}
             loadOptions={loadOptions}
-            onChange={onChange}
+            onChange={onOptionChange}
             defaultOptions
             className={className}
             {...rest}

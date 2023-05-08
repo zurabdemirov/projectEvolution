@@ -1,4 +1,5 @@
 import { AsyncSelect } from "../../shared/AsyncSelect";
+import {Input} from "../../shared/Input";
 // @ts-ignore
 import qs from 'qs';
 
@@ -9,6 +10,11 @@ export const filters = [
         placeholder: 'first',
         getUrl: () => 'countries',
         className: 'selectContainer',
+    },
+    {
+        component: (props: any) => <Input key={props.state.firstSelect.event} {...props} />,
+        name: "firstInput",
+        className: 'inputContainer',
     },
     {
         component: (props: any) => <AsyncSelect key={props.state.firstSelect.id} {...props} />,
@@ -41,6 +47,11 @@ export const filters = [
         placeholder: 'six',
         getUrl: () => 'brands',
         className: 'selectContainer',
+    },
+    {
+        component: (props: any) => <Input key={props.state.secondInput.event} {...props} />,
+        name: 'secondInput',
+        className: 'inputContainer',
     },
     {
         component: (props: any) => <AsyncSelect {...props} />,

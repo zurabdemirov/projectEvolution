@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ChangeEvent } from "react";
 import { useAsyncFn } from 'react-use';
 import { fetchCountries } from "../../requests";
-import { formsObject, Posts, State } from '../../type'
+import { formsObject, Posts } from '../../type'
 import { filters } from "./Filters";
 
 export default function TrainingAsyncSelect() {
@@ -10,6 +10,10 @@ export default function TrainingAsyncSelect() {
 
     const onOptionChange = (newValue: Posts, {name}: Posts) => {
         setState((state: any) => ({...state, [name]: newValue}))
+    };
+
+    const onInputChange = (e: ChangeEvent<HTMLInputElement>, name: string) => {
+        setState((state: any) => ({...state, [name]: e?.target?.value}))
     };
 
     useEffect(() => {
@@ -27,9 +31,11 @@ export default function TrainingAsyncSelect() {
                     <>
                         {component({
                             ...rest,
-                            onChange: onOptionChange,
+                            onOptionChange: onOptionChange,
+                            onInputChange: onInputChange,
                             name,
                             state,
+                            setState,
                             ...(getUrl && { url: getUrl(state.firstSelect.id)})
                         })}
                     </>
