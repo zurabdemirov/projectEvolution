@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import ReactSelect from "react-select/async";
 import axios from "axios";
 
@@ -8,7 +8,7 @@ interface PropsType {
     placeholder: string;
     optionValue: string,
     optionLabel: string,
-    onOptionChange:any,
+    onChange: any,
     url?: string,
     urlFilter: string,
     className?: string,
@@ -20,7 +20,7 @@ const domain = 'http://localhost:3001/'
 export const AsyncSelect = ({
                                 name,
                                 placeholder,
-                                onOptionChange,
+                                onChange,
                                 url,
                                 className,
                                 urlFilter = "name",
@@ -46,6 +46,10 @@ export const AsyncSelect = ({
             })
     };
 
+    const handleChange = (value: any, {name}:{ name: string; }) => {
+        onChange({target: {value, name}})
+    };
+
     return (
         <ReactSelect
             name={name}
@@ -53,7 +57,7 @@ export const AsyncSelect = ({
             getOptionValue={getOption}
             getOptionLabel={getOption}
             loadOptions={loadOptions}
-            onChange={onOptionChange}
+            onChange={handleChange}
             defaultOptions
             className={className}
             {...rest}

@@ -5,16 +5,16 @@ interface PropsType {
     name: string;
     state: any;
     className: string;
-    onInputChange:(e:ChangeEvent<HTMLInputElement>, name: string) => void;
+    onChange:(e:ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input = ({onInputChange, name, state, className, ...rest}: PropsType) => {
+export const Input = ({onChange, name, state, className, ...rest}: PropsType) => {
     return (
         <input
             name={name}
             value={state[name]}
             className={className}
-            onChange={(() => (e) => onInputChange(e, name))()}
+            onChange={onChange}
             {...rest}
         />
     );

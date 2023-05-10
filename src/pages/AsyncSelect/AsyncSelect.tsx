@@ -1,19 +1,15 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
 import { useAsyncFn } from 'react-use';
 import { fetchCountries } from "../../requests";
-import { formsObject, Posts } from '../../type'
+import { formsObject } from '../../type'
 import { filters } from "./Filters";
 
 export default function TrainingAsyncSelect() {
     const [state, setState] = useState<any>(formsObject);
     const [{value, error}, getCountries] = useAsyncFn(fetchCountries);
 
-    const onOptionChange = (newValue: Posts, {name}: Posts) => {
-        setState((state: any) => ({...state, [name]: newValue}))
-    };
-
-    const onInputChange = (e: ChangeEvent<HTMLInputElement>, name: string) => {
-        setState((state: any) => ({...state, [name]: e?.target?.value}))
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setState((prev: any) => ({...prev, [e.target.name]: e?.target?.value}))
     };
 
     useEffect(() => {
@@ -31,8 +27,7 @@ export default function TrainingAsyncSelect() {
                     <>
                         {component({
                             ...rest,
-                            onOptionChange: onOptionChange,
-                            onInputChange: onInputChange,
+                            onChange: onChange,
                             name,
                             state,
                             setState,
