@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 
-import TrainingAsyncSelect from "../pages/AsyncSelect/AsyncSelect"
-import TrainingReactHookForm from "../pages/ReactHookForm/ReactHookForm";
+import TrainingAsyncSelect from "../pages/TrainingAsyncSelect/TrainingAsyncSelect"
+import TrainingReactHookForm from "../pages/TrainingReactHookForm/TrainingReactHookForm";
 
 export default function App() {
 

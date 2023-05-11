@@ -1,6 +1,7 @@
 import React from "react";
 import ReactSelect from "react-select/async";
 import axios from "axios";
+import {ActionMeta, SingleValue} from "react-select";
 
 interface PropsType {
     id?: string,
@@ -8,7 +9,7 @@ interface PropsType {
     placeholder: string;
     optionValue: string,
     optionLabel: string,
-    onChange: any,
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
     url?: string,
     urlFilter: string,
     className?: string,
@@ -38,17 +39,13 @@ export const AsyncSelect = ({
             }).catch(function (error) {
                 if (error.response) {
                     console.log('@@@error', error)
-                } else if (error.request) {
-                    console.log('@@@error.request', error.request)
-                } else {
-                    console.log('@@@Error', error.message);
                 }
             })
     };
 
-    const handleChange = (value: any, {name}:{ name: string; }) => {
-        onChange({target: {value, name}})
-    };
+    const handleChange = (value: SingleValue<{id: number, name: string}>, {name}: ActionMeta<{id: number, name: string}>) => {
+        onChange({target: {value, name}} as unknown as React.ChangeEvent<HTMLInputElement>)
+    }
 
     return (
         <ReactSelect

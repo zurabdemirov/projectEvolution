@@ -1,26 +1,26 @@
 export const formsObject = {
-    firstSelect: "",
+    firstSelect: null,
     firstInput: "",
-    secondSelect: "",
-    thirdSelect: "",
-    fifthSelect: "",
-    sixSelect: "",
+    secondSelect: null,
+    thirdSelect: null,
+    fifthSelect: null,
+    sixSelect: null,
     secondInput: "",
-    sevenSelect: "",
+    sevenSelect: null,
 };
 
-export interface Posts {
+export interface Post {
     id: number,
     name:  string,
 }
 
 export interface State {
-    firstSelect?: "" | Posts,
-    firstInput?: "" | Posts,
-    secondSelect?: "" | Posts,
-    thirdSelect?: "" | Posts,
-    fifthSelect?: "" | Posts,
-    sixSelect?: "" | Posts,
-    secondInput?: "" | Posts,
-    sevenSelect?: "" | Posts,
+    firstSelect: null | Post,
+    firstInput: string,
+    secondSelect: null | Post,
+    thirdSelect: null | Post,
+    fifthSelect: null | Post,
+    sixSelect: null | Post,
+    secondInput: string,
+    sevenSelect: null | Post,
 }
