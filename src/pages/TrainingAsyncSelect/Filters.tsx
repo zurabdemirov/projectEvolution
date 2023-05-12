@@ -1,7 +1,8 @@
 import { AsyncSelect } from "../../shared/AsyncSelect";
-import {Input} from "../../shared/Input";
 // @ts-ignore
 import qs from 'qs';
+import {Input} from "../../shared/Input";
+import {State} from "../../type";
 
 export const filters = [
     {
@@ -28,7 +29,7 @@ export const filters = [
     },
     {
         name: 'secondSelect',
-        getUrl: (firstSelectId?: number) => firstSelectId ? `cities?${qs.stringify({ countryId: firstSelectId })}` : 'cities',
+        getUrl: (firstSelectId?: State) => firstSelectId ? `cities?${qs.stringify({ countryId: firstSelectId })}` : 'cities',
         component: (props: any) => (
             <AsyncSelect
                 {...props}
@@ -40,13 +41,13 @@ export const filters = [
     },
     {
         name: "thirdSelect",
-        getUrl: (firstSelectId?: number) => firstSelectId ? `avatar?${qs.stringify({ countryId: firstSelectId })}` : 'avatar',
+        getUrl: (firstSelectId?: State) => firstSelectId ? `avatar?${qs.stringify({ countryId: firstSelectId })}` : 'avatar',
         component: (props: any) => (
             <AsyncSelect
-               {...props}
-               placeholder="third"
-               className="selectContainer"
-               key={props.url}
+                {...props}
+                placeholder="third"
+                className="selectContainer"
+                key={props.url}
             />
         ),
     },
@@ -54,11 +55,11 @@ export const filters = [
         name: "fifthSelect",
         component: (props: any) => (
             <AsyncSelect
-              {...props}
-              placeholder="fifth"
-              url='currency'
-              className="selectContainer"
-              key={props.url}
+                {...props}
+                placeholder="fifth"
+                url='currency'
+                className="selectContainer"
+                key={props.url}
             />
         ),
     },

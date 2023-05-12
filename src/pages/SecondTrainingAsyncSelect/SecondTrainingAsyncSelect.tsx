@@ -1,10 +1,10 @@
 import React from "react";
 import { filters } from "./Filters";
-import {formsObject} from "../../type";
+import {secondFormsObject} from "../../type";
 import {useFilter} from "../../hooks/useFilter";
 
-export default function TrainingAsyncSelect() {
-    const { onChange, state } = useFilter(formsObject);
+export default function SecondTrainingAsyncSelect() {
+    const { onChange, state } = useFilter(secondFormsObject);
 
     return (
         <div className='app'>

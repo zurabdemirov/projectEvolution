@@ -118,5 +118,118 @@
       "id": 3,
       "name": "English"
     }
+  ],
+
+  "car": [
+    {
+      "id": 1,
+      "name": "Honda"
+    },
+    {
+      "id": 2,
+      "name": "Лада"
+    },
+    {
+      "id": 3,
+      "name": "Ford"
+    }
+  ],
+  "numberJobs": [
+    {
+      "id": 1,
+      "name": "1600"
+    },
+    {
+      "id": 2,
+      "name": "4000"
+    },
+    {
+      "id": 3,
+      "name": "7300"
+    }
+  ],
+  "paint": [
+    {
+      "id": 1,
+      "countryId": 1,
+      "name": "красный"
+    },
+    {
+      "id": 2,
+      "countryId": 1,
+      "name": "белый"
+    },
+    {
+      "id": 3,
+      "countryId": 1,
+      "name": "черный"
+    },
+    {
+      "id": 4,
+      "countryId": 2,
+      "name": "черный"
+    },
+    {
+      "id": 5,
+      "countryId": 2,
+      "name": "розовый"
+    },
+    {
+      "id": 6,
+      "countryId": 2,
+      "name": "голубой"
+    },
+    {
+      "id": 7,
+      "countryId": 3,
+      "name": "белый"
+    },
+    {
+      "id": 8,
+      "countryId": 3,
+      "name": "синий"
+    },
+    {
+      "id": 9,
+      "countryId": 3,
+      "name": "серый"
+    }
+  ],
+  "equipment": [
+    {
+      "id": 1,
+      "countryId": 1,
+      "name": "супер"
+    },
+    {
+      "id": 2,
+      "countryId": 1,
+      "name": "пупер"
+    },
+    {
+      "id": 3,
+      "countryId": 1,
+      "name": "макси"
+    },
+    {
+      "id": 4,
+      "countryId": 2,
+      "name": "супер пупер"
+    },
+    {
+      "id": 5,
+      "countryId": 2,
+      "name": "макси супер"
+    },
+    {
+      "id": 6,
+      "countryId": 3,
+      "name": "супер пупер"
+    },
+    {
+      "id": 7,
+      "countryId": 3,
+      "name": "макси"
+    }
   ]
 }

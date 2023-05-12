@@ -1,9 +1,9 @@
 import {ChangeEvent, useEffect, useState} from "react";
-import {formsObject, State} from "../../../type";
+import {State} from "../type";
 import {useAsyncFn} from "react-use";
-import {fetchCountries} from "../../../requests";
+import {fetchCountries} from "../requests";
 
-export const useFilter = () => {
+export const useFilter = (formsObject: any) => {
     const [state, setState] = useState<State>(formsObject);
     const [{value, error}, getCountries] = useAsyncFn(fetchCountries);
 

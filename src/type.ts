@@ -9,6 +9,13 @@ export const formsObject = {
     sevenSelect: null,
 };
 
+export const secondFormsObject = {
+    firstSelect: null,
+    secondSelect: null,
+    thirdSelect: null,
+    fifthSelect: null,
+};
+
 export interface Post {
     id: number,
     name:  string,
