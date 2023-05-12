@@ -1,24 +1,9 @@
-import React, { useEffect, useState, ChangeEvent } from "react";
-import { useAsyncFn } from 'react-use';
-import { fetchCountries } from "../../requests";
-import {formsObject, State} from '../../type'
+import React from "react";
 import { filters } from "./Filters";
+import {useFilter} from "./hooks/useFilter";
 
 export default function TrainingAsyncSelect() {
-    const [state, setState] = useState<State>(formsObject);
-    const [{value, error}, getCountries] = useAsyncFn(fetchCountries);
-
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setState((prev: State) => ({...prev, [e.target.name]: e?.target?.value}))
-    };
-
-    useEffect(() => {
-        setState((prevState) => ({ ...prevState, secondSelect: null }));
-    }, [state?.firstSelect?.id]);
-
-    useEffect(()=> {
-        getCountries();
-    }, [])
+    const { onChange, state } = useFilter();
 
     return (
         <div className='app'>
@@ -29,7 +14,7 @@ export default function TrainingAsyncSelect() {
                         onChange,
                         name,
                         state,
-                        ...(getUrl && state?.firstSelect?.id && { url: getUrl(state?.firstSelect?.id)})
+                        ...(getUrl && { url: getUrl(state?.firstSelect?.id)})
                     })}
                 </React.Fragment>
             ))}

@@ -28,7 +28,7 @@ export const filters = [
     },
     {
         name: 'secondSelect',
-        getUrl: (firstSelectId: number) => `cities?${qs.stringify({ countryId: firstSelectId })}`,
+        getUrl: (firstSelectId?: number) => firstSelectId ? `cities?${qs.stringify({ countryId: firstSelectId })}` : 'cities',
         component: (props: any) => (
             <AsyncSelect
                 {...props}
@@ -40,7 +40,7 @@ export const filters = [
     },
     {
         name: "thirdSelect",
-        getUrl: (firstSelectId: number) => `avatar?${qs.stringify({ countryId: firstSelectId })}`,
+        getUrl: (firstSelectId?: number) => firstSelectId ? `avatar?${qs.stringify({ countryId: firstSelectId })}` : 'avatar',
         component: (props: any) => (
             <AsyncSelect
                {...props}
