@@ -8,3 +8,12 @@ export const fetchCountries = async () => {
     throw new Error(error?.response?.data?.message);
   }
 };
+
+export const fetchCar = async () => {
+  try {
+    const response = await axios('http://localhost:3001/car');
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error?.response?.data?.message);
+  }
+};

@@ -2,9 +2,10 @@ import React from "react";
 import { filters } from "./Filters";
 import {formsObject} from "../../type";
 import {useFilter} from "../../hooks/useFilter";
+import {fetchCountries} from "../../requests";
 
 export default function TrainingAsyncSelect() {
-    const { onChange, state } = useFilter(formsObject);
+    const { onChange, state } = useFilter(formsObject, fetchCountries);
 
     return (
         <div className='app'>

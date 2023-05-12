@@ -2,9 +2,10 @@ import React from "react";
 import { filters } from "./Filters";
 import {secondFormsObject} from "../../type";
 import {useFilter} from "../../hooks/useFilter";
+import {fetchCar} from "../../requests";
 
 export default function SecondTrainingAsyncSelect() {
-    const { onChange, state } = useFilter(secondFormsObject);
+    const { onChange, state } = useFilter(secondFormsObject, fetchCar);
 
     return (
         <div className='app'>
