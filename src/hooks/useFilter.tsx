@@ -1,22 +1,16 @@
 import {ChangeEvent, useEffect, useState} from "react";
-import {State} from "../type";
-import {useAsyncFn} from "react-use";
+import {SecondState, State} from "../type";
 
-export const useFilter = (formsObject: any, fetch: any) => {
-    const [state, setState] = useState<State>(formsObject);
-    const [{value, error}, getCountries] = useAsyncFn(fetch);
+export const useFilter = (defaultValues: State | SecondState) => {
+    const [state, setState] = useState<State | SecondState>(defaultValues);
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setState((prev: State) => ({...prev, [e.target.name]: e?.target?.value}))
+        setState((prev) => ({...prev, [e.target.name]: e?.target?.value}))
     };
 
     useEffect(() => {
         setState((prevState) => ({ ...prevState, secondSelect: null }));
     }, [state?.firstSelect?.id]);
-
-    useEffect(()=> {
-        getCountries();
-    }, [])
 
     return {
         onChange,

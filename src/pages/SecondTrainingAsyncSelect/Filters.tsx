@@ -1,7 +1,7 @@
 import { AsyncSelect } from "../../shared/AsyncSelect";
 // @ts-ignore
 import qs from 'qs';
-import {State} from "../../type";
+import {SecondState} from "../../type";
 
 export const filters = [
     {
@@ -30,7 +30,7 @@ export const filters = [
     },
     {
         name: "thirdSelect",
-        getUrl: (state?: State) => state?.firstSelect?.id ? `paint?${qs.stringify({ countryId: state.firstSelect.id })}` : 'paint',
+        getUrl: (state?: SecondState) => state?.firstSelect?.id ? `paint?${qs.stringify({ countryId: state.firstSelect.id })}` : 'paint',
         component: (props: any) => (
             <AsyncSelect
                 {...props}
@@ -42,7 +42,7 @@ export const filters = [
     },
     {
         name: "fifthSelect",
-        getUrl: (state?: State) => state?.thirdSelect?.id ? `equipment?${qs.stringify({ countryId: state.thirdSelect.id })}` : 'equipment',
+        getUrl: (state?: SecondState) => state?.thirdSelect?.id ? `equipment?${qs.stringify({ countryId: state.thirdSelect.id })}` : 'equipment',
         component: (props: any) => (
             <AsyncSelect
                 {...props}

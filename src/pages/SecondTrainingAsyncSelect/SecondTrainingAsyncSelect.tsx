@@ -1,11 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { filters } from "./Filters";
 import {secondFormsObject} from "../../type";
 import {useFilter} from "../../hooks/useFilter";
 import {fetchCar} from "../../requests";
+import {useAsyncFn} from "react-use";
 
 export default function SecondTrainingAsyncSelect() {
-    const { onChange, state } = useFilter(secondFormsObject, fetchCar);
+    const { onChange, state } = useFilter(secondFormsObject);
+    const [{value, error}, getCountries] = useAsyncFn(fetchCar);
+
+    useEffect(()=> {
+        getCountries();
+    }, [])
 
     return (
         <div className='app'>

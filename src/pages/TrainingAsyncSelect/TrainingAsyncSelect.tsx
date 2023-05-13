@@ -1,11 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { filters } from "./Filters";
-import {formsObject} from "../../type";
+import {formsObject, State} from "../../type";
 import {useFilter} from "../../hooks/useFilter";
 import {fetchCountries} from "../../requests";
+import {useAsyncFn} from "react-use";
 
 export default function TrainingAsyncSelect() {
-    const { onChange, state } = useFilter(formsObject, fetchCountries);
+    const { onChange, state } = useFilter(formsObject);
+    const [{value, error}, getCountries] = useAsyncFn(fetchCountries);
+
+    useEffect(()=> {
+        getCountries();
+    }, [])
 
     return (
         <div className='app'>

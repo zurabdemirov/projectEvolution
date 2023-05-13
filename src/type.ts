@@ -31,3 +31,10 @@ export interface State {
     secondInput: string,
     sevenSelect: null | Post,
 }
+
+export interface SecondState {
+    firstSelect: null | Post,
+    secondSelect: null | Post,
+    thirdSelect: null | Post,
+    fifthSelect: null | Post,
+}
